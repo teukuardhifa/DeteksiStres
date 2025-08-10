@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["python310", "gcc", "curl"]
+
+[phases.install]
+cmds = ["pip install --no-cache-dir -r requirements.txt"]
+
+[phases.build]
+cmds = ["echo 'Using Dockerfile for build'"]
+
+[start]
+cmd = "gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 app:app"
